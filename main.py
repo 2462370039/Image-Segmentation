@@ -17,9 +17,10 @@ if __name__ == "__main__":
                         fill_mode='nearest')    #填充模式,‘nearest'表示用最近的像素填充
     myGene = trainGenerator1(2, './Crag/train','image','label',data_gen_args,save_to_dir = None, image_color_mode = "rgb",mask_color_mode = "grayscale")
 
-    model = unet()
+    #model = unet()
+    model = unet_2()
 
-    model_checkpoint = ModelCheckpoint('unet_membrane2.hdf5', monitor='loss',verbose=1, save_best_only=True)
+    model_checkpoint = ModelCheckpoint('unet_membrane3 .hdf5', monitor='loss',verbose=1, save_best_only=True)
     model.fit_generator(myGene,steps_per_epoch=300,epochs=5,callbacks=[model_checkpoint])
 
     testGene = testGenerator("./Crag/test/image")
