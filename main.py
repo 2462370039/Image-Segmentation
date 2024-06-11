@@ -18,7 +18,8 @@ if __name__ == "__main__":
     myGene = trainGenerator1(2, './Crag/train','image','label',data_gen_args,save_to_dir = None, image_color_mode = "rgb",mask_color_mode = "grayscale")
 
     #model = unet()
-    model = unet_2()
+    #model = unet_2()
+    model = mnet()
 
     model_checkpoint = ModelCheckpoint('unet_membrane3 .hdf5', monitor='loss',verbose=1, save_best_only=True)
     model.fit_generator(myGene,steps_per_epoch=300,epochs=5,callbacks=[model_checkpoint])
